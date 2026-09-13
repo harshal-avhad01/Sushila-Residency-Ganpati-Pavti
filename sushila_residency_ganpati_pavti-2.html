@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sushila Residency Mitra Mandal • Ganpati Pavti</title>
+<style>
+:root{
+  --saffron:#e65100; --orange:#f57c00; --gold:#ffb300; --cream:#fff8ed;
+  --maroon:#7b1e1e; --green:#17633b; --ink:#2b1a14; --white:#fff;
+}
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);
+background:radial-gradient(circle at 15% 10%,#ffe0a6 0 8%,transparent 25%),linear-gradient(135deg,#fffaf2,#fff1d6);min-height:100vh}
+body:before,body:after{content:"";position:fixed;width:160px;height:160px;border-radius:50%;border:18px double rgba(230,81,0,.10);z-index:-1}
+body:before{top:8%;right:-55px} body:after{bottom:4%;left:-70px}
+header{background:linear-gradient(120deg,var(--maroon),var(--saffron));color:white;padding:20px 18px;position:relative;overflow:hidden}
+header:after{content:"ॐ  गणपती बाप्पा मोरया  ॐ";position:absolute;right:5%;bottom:-8px;font-size:clamp(25px,5vw,58px);font-weight:800;opacity:.10;white-space:nowrap}
+.brand{max-width:1050px;margin:auto;display:flex;align-items:center;gap:15px}.brand-icon{font-size:42px}
+.brand h1{margin:0;font-size:clamp(20px,4vw,32px)}.brand p{margin:3px 0 0;opacity:.9}
+main{width:min(1050px,92%);margin:32px auto 50px}.hero{text-align:center;margin-bottom:25px}
+.badge{display:inline-block;background:#fff3d2;border:1px solid #f0c36a;color:var(--maroon);padding:7px 14px;border-radius:999px;font-weight:700}
+.hero h2{font-family:Georgia,serif;color:var(--maroon);font-size:clamp(30px,6vw,52px);margin:14px 0 7px}
+.hero p{margin:0;color:#6d5349}
+.card{background:rgba(255,255,255,.92);border:1px solid #f1d9b4;border-radius:24px;padding:clamp(20px,4vw,34px);box-shadow:0 15px 45px rgba(103,45,15,.10);max-width:720px;margin:auto}
+.steps{display:flex;justify-content:center;gap:8px;margin-bottom:24px;flex-wrap:wrap}.step{padding:7px 12px;border-radius:999px;background:#f8eee3;color:#876b5e;font-size:13px}.step.active{background:#ffe0bd;color:var(--saffron);font-weight:800}
+label{display:block;font-weight:750;margin:16px 0 7px}input{width:100%;padding:14px 15px;border:1px solid #dbc5b5;border-radius:13px;font-size:16px;outline:none;background:#fff}
+input:focus{border-color:var(--orange);box-shadow:0 0 0 4px rgba(245,124,0,.10)}
+.amounts{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:9px}.amt{border:1px solid #e5c7a8;background:#fff8ef;padding:10px;border-radius:11px;cursor:pointer;font-weight:700}.amt:hover{background:#ffe8c7}
+.btn{width:100%;border:0;border-radius:14px;padding:15px 18px;margin-top:22px;background:linear-gradient(90deg,var(--saffron),#ff8f00);color:white;font-weight:850;font-size:17px;cursor:pointer;box-shadow:0 8px 20px rgba(230,81,0,.22)}
+.btn.secondary{background:#fff;color:var(--maroon);border:1px solid #e4c5a5;box-shadow:none}
+.note{text-align:center;font-size:12px;color:#826d63;margin-top:13px}.hidden{display:none!important}
+.payment{text-align:center}.payment h3{font-family:Georgia,serif;color:var(--maroon);font-size:28px;margin:0 0 5px}
+.pay-amount{font-size:30px;font-weight:900;color:var(--saffron);margin:5px}
+.qr{width:240px;height:240px;margin:18px auto;border:10px solid white;border-radius:15px;box-shadow:0 7px 24px rgba(0,0,0,.14);object-fit:cover;background:#eee}
+.upi{background:#fff8ed;border:1px dashed #e1b98e;border-radius:12px;padding:12px;word-break:break-all;font-weight:700}
+.verify{background:#f0f9f2;border:1px solid #b9dfc2;padding:12px;border-radius:12px;margin-top:14px;text-align:left;font-size:13px}
+.receipt{max-width:650px;background:#fff;border:1px solid #e8d2b5;border-radius:18px;overflow:hidden;margin:auto}
+.receipt-top{background:linear-gradient(120deg,var(--maroon),var(--saffron));color:#fff;padding:25px;text-align:center}
+.receipt-top .ganesh{font-size:35px}.receipt-top h3{margin:6px 0;font-family:Georgia,serif;font-size:28px}.receipt-top p{margin:3px;opacity:.9}
+.receipt-body{padding:25px}.receipt-row{display:flex;justify-content:space-between;gap:15px;padding:12px 0;border-bottom:1px dashed #dfcbb8}.receipt-row:last-child{border-bottom:0}.receipt-row span:first-child{color:#806d63}.receipt-row strong{color:#3b261e;text-align:right}
+.thanks{text-align:center;padding:15px 5px;color:var(--maroon);font-family:Georgia,serif;font-size:20px;line-height:1.5}
+footer{text-align:center;color:#876f62;font-size:12px;padding:0 20px 35px}.tiny{font-size:11px;color:#987f72}
+@media(max-width:520px){.amounts{grid-template-columns:repeat(2,1fr)}.qr{width:210px;height:210px}.receipt-body{padding:18px}}
+@media print{
+ body{background:white}.no-print,header,footer,.hero{display:none!important}.card{box-shadow:none;border:0;width:100%;max-width:100%;padding:0}.receipt{border:1px solid #bbb}
+}
+
+/* Premium festival pavti */
+.receipt{position:relative;box-shadow:0 18px 50px rgba(98,42,12,.16);background:#fffdf8}
+.receipt:before{content:"";position:absolute;inset:8px;border:1px solid #edc982;border-radius:13px;pointer-events:none}
+.receipt-top{position:relative;padding:28px 22px 24px;background:
+ radial-gradient(circle at 50% 0,rgba(255,205,90,.30),transparent 38%),
+ linear-gradient(135deg,#6d1717,#a92e18 52%,#e06d0b)}
+.receipt-top:after{content:"✦  ❖  ✦";display:block;margin-top:10px;letter-spacing:10px;color:#ffd98b;font-size:13px}
+.receipt-top .ganesh{font-size:38px;text-shadow:0 3px 10px rgba(0,0,0,.18)}
+.receipt-top h3{font-size:27px;letter-spacing:.2px}
+.receipt-top p{font-size:12px}
+.receipt-body{position:relative;padding:28px 28px 22px}
+.receipt-row{padding:14px 2px;border-bottom:1px dashed #dfc6a5}
+.receipt-row span:first-child{font-size:13px}
+.receipt-row strong{font-size:14px}
+.receipt-row:nth-child(4){background:#fff4dc;border-radius:12px;padding:15px 13px;margin-top:8px;border:1px solid #f0d49c}
+.receipt-row:nth-child(4) strong{font-size:20px;color:#c34c0a}
+.thanks{font-size:18px;margin-top:8px;color:#741d18}
+.thanks b{display:inline-block;margin-top:7px;color:#c34c0a}
+.share-actions{display:grid;gap:8px}
+@media(max-width:520px){.receipt-body{padding:24px 20px 18px}.receipt-top h3{font-size:23px}}
+</style>
+</head>
+<body>
+<header class="no-print">
+  <div class="brand">
+    <div class="brand-icon">🙏</div>
+    <div><h1>Sushila Residency Mitra Mandal</h1><p>श्री गणेशोत्सव • सार्वजनिक गणपती उत्सव</p></div>
+  </div>
+</header>
+
+<main>
+  <section class="hero no-print">
+    <span class="badge">🌺 गणपती बाप्पा मोरया 🌺</span>
+    <h2>Ganpati Pavti</h2>
+    <p>Contribute to our celebration and receive your digital pavti instantly.</p>
+  </section>
+
+  <section class="card" id="formCard">
+    <div class="steps"><span class="step active">1. Details</span><span class="step">2. Payment</span><span class="step">3. Pavti</span></div>
+    <h3 style="text-align:center;margin:0;color:#7b1e1e">वर्गणी / Festival Contribution</h3>
+    <label for="name">Your Name</label>
+    <input id="name" placeholder="Enter your full name" autocomplete="name">
+    <label for="amount">Contribution Amount (₹)</label>
+    <input id="amount" type="number" min="1" placeholder="Enter amount">
+    <div class="amounts">
+      <button class="amt" onclick="setAmount(500)">₹500</button><button class="amt" onclick="setAmount(1000)">₹1,000</button>
+      <button class="amt" onclick="setAmount(1200)">₹1,200</button><button class="amt" onclick="setAmount(2000)">₹2,000</button>
+    </div>
+    <button class="btn" onclick="showPayment()">Continue to Payment →</button>
+    <div class="note">Your details are used only to generate the festival pavti on this page.</div>
+  </section>
+
+  <section class="card hidden" id="paymentCard">
+    <div class="steps"><span class="step">1. Details</span><span class="step active">2. Payment</span><span class="step">3. Pavti</span></div>
+    <div class="payment">
+      <h3>Complete Your Contribution</h3>
+      <div>Thank you, <strong id="payName"></strong> 🙏</div>
+      <div class="pay-amount" id="payAmount"></div>
+      <p>Scan the QR below using any UPI app.</p>
+
+      <!-- Replace this QR image URL with your mandal's actual UPI QR image. -->
+      <img class="qr" id="qr" alt="UPI payment QR code"
+        src="/storage/emulated/O/Pictures/ WhatsApp/ IMG_20260913_122259.jpg">
+
+      <div class="upi">UPI ID: <span id="upiText">raskarnikhil32@okhdfcbank</span></div>
+      <div class="verify"><strong>After payment:</strong><br>
+        Tap “I Have Paid” only after your UPI app shows the payment as successful. The pavti generated here is a <strong>digital acknowledgement</strong>; for automated payment verification, connect this page to your payment provider/webhook.
+      </div>
+      <button class="btn" onclick="generateReceipt()">✓ I Have Paid — Generate Pavti</button>
+      <button class="btn secondary" onclick="backToForm()">← Edit Details</button>
+    </div>
+  </section>
+
+  <section class="card hidden" id="receiptCard">
+    <div class="steps no-print"><span class="step">1. Details</span><span class="step">2. Payment</span><span class="step active">3. Pavti</span></div>
+    <div class="receipt" id="receipt">
+      <div class="receipt-top">
+        <div class="ganesh">🪔 ॐ 🙏 🪔</div>
+        <h3>Sushila Residency Mitra Mandal</h3>
+        <p>Ganpati Festival Contribution • Digital Pavti</p>
+      </div>
+      <div class="receipt-body">
+        <div class="receipt-row"><span>Pavti No.</span><strong id="receiptNo"></strong></div>
+        <div class="receipt-row"><span>Date & Time</span><strong id="receiptDate"></strong></div>
+        <div class="receipt-row"><span>Received From</span><strong id="receiptName"></strong></div>
+        <div class="receipt-row"><span>Contribution</span><strong id="receiptAmount"></strong></div>
+        <div class="thanks">आपल्या सहकार्याबद्दल मनःपूर्वक धन्यवाद!<br>
+          गणपती बाप्पा आपल्या आणि आपल्या कुटुंबाच्या आयुष्यात सुख, समृद्धी, आरोग्य आणि आनंद घेऊन येवो. 🌺<br>
+          <b>गणपती बाप्पा मोरया!</b>
+        </div>
+      </div>
+    </div>
+    <div class="no-print">
+      <button class="btn" onclick="sharePavti()">📲 Share Pavti on WhatsApp</button>
+      <button class="btn secondary" onclick="savePavtiJpeg()">🖼️ Save Pavti as JPEG</button>
+      <button class="btn secondary" onclick="window.print()">🖨️ Print / Save PDF</button>
+      <button class="btn secondary" onclick="newContribution()">＋ Create Another Pavti</button>
+      <p class="note">JPEG is ideal for WhatsApp and gallery sharing.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="no-print">
+  Made with devotion by <strong>Sushila Residency Mitra Mandal</strong> • Ganpati Bappa Morya!<br>
+  <span class="tiny">Production note: configure your real UPI ID/QR before publishing.</span>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script>
+const UPI_ID = "YOUR_UPI_ID"; // CHANGE THIS
+function setAmount(n){document.getElementById("amount").value=n}
+function showPayment(){
+  const name=document.getElementById("name").value.trim();
+  const amount=Number(document.getElementById("amount").value);
+  if(!name) return alert("Please enter your name.");
+  if(!amount || amount<1) return alert("Please enter a valid contribution amount.");
+  document.getElementById("payName").textContent=name;
+  document.getElementById("payAmount").textContent="₹"+amount.toLocaleString("en-IN");
+  document.getElementById("upiText").textContent=UPI_ID;
+  const data=`upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent("Sushila Residency Mitra Mandal")}&am=${amount}&cu=INR`;
+  document.getElementById("qr").src=`https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(data)}`;
+  document.getElementById("formCard").classList.add("hidden");
+  document.getElementById("receiptCard").classList.add("hidden");
+  document.getElementById("paymentCard").classList.remove("hidden");
+}
+function backToForm(){document.getElementById("paymentCard").classList.add("hidden");document.getElementById("formCard").classList.remove("hidden")}
+function generateReceipt(){
+  const name=document.getElementById("name").value.trim(), amount=Number(document.getElementById("amount").value);
+  const now=new Date();
+  const no="SRMM-"+now.getFullYear()+"-"+String(Date.now()).slice(-6);
+  document.getElementById("receiptNo").textContent=no;
+  document.getElementById("receiptDate").textContent=now.toLocaleString("en-IN",{dateStyle:"medium",timeStyle:"short"});
+  document.getElementById("receiptName").textContent=name;
+  document.getElementById("receiptAmount").textContent="₹"+amount.toLocaleString("en-IN");
+  document.getElementById("paymentCard").classList.add("hidden");
+  document.getElementById("receiptCard").classList.remove("hidden");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function newContribution(){
+  document.getElementById("name").value="";document.getElementById("amount").value="";
+  document.getElementById("receiptCard").classList.add("hidden");document.getElementById("formCard").classList.remove("hidden");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+async function renderPavti(){
+  const node=document.getElementById("receipt");
+  return await html2canvas(node,{scale:3,backgroundColor:"#fffdf8",useCORS:true});
+}
+async function savePavtiJpeg(){
+  const canvas=await renderPavti();
+  const link=document.createElement("a");
+  const no=document.getElementById("receiptNo").textContent||"pavti";
+  link.download=no+".jpg";
+  link.href=canvas.toDataURL("image/jpeg",0.95);
+  link.click();
+}
+async function sharePavti(){
+  const canvas=await renderPavti();
+  const no=document.getElementById("receiptNo").textContent||"pavti";
+  const name=document.getElementById("receiptName").textContent||"Ganpati भक्त";
+  const amount=document.getElementById("receiptAmount").textContent||"₹0";
+  const date=document.getElementById("receiptDate").textContent||"";
+  const blob=await new Promise(r=>canvas.toBlob(r,"image/jpeg",0.95));
+  const file=new File([blob],no+".jpg",{type:"image/jpeg"});
+
+  const text =
+`🙏 Ganpati Bappa Morya!
+
+Thank you *${name}* for your valuable contribution of *${amount}* towards *Sushila Residency Mitra Mandal*'s Ganpati Utsav 2026! 🧡🌺
+
+Your contribution helps us celebrate Bappa's festival together and makes this celebration more special.
+
+May Shri Ganpati Bappa bless you and your family with happiness, good health, success and prosperity. ✨🙏
+
+*पावती क्र.: ${no}*
+*दिनांक: ${date}*
+
+गणपती बाप्पा मोरया! 🚩`;
+
+  if(navigator.share && (!navigator.canShare || navigator.canShare({files:[file]}))){
+    try{await navigator.share({text,files:[file]});return;}catch(e){}
+  }
+  window.open("https://wa.me/?text="+encodeURIComponent(text)," _blank");
+}
+</script>
+</body>
+</html>
