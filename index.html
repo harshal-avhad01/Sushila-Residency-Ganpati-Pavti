@@ -106,10 +106,10 @@ footer{text-align:center;color:#876f62;font-size:12px;padding:0 20px 35px}.tiny{
       <p>Scan the QR below using any UPI app.</p>
 
       <!-- Replace this QR image URL with your mandal's actual UPI QR image. -->
-      <img class="qr" id="qr" alt="UPI payment QR code"
-        src="Upiid.jpg">
+     <img class="qr" id="qr" alt="UPI payment QR code"
+     src="Upiid.jpg">
 
-      <div class="upi">UPI ID: <span id="upiText">raskarnikhil32@okhdfcbank</span></div>
+      <div class="upi">UPI ID: raskarnikhil32@okhdfcbank <span id="upiText">raskarnikhil32@okhdfcbank</span></div>
       <div class="verify"><strong>After payment:</strong><br>
         Tap “I Have Paid” only after your UPI app shows the payment as successful. The pavti generated here is a <strong>digital acknowledgement</strong>; for automated payment verification, connect this page to your payment provider/webhook.
       </div>
@@ -157,15 +157,24 @@ footer{text-align:center;color:#876f62;font-size:12px;padding:0 20px 35px}.tiny{
 const UPI_ID = "raskarnikhil32@okhdfcbank"; // CHANGE THIS
 function setAmount(n){document.getElementById("amount").value=n}
 function showPayment(){
-  const name=document.getElementById("name").value.trim();
-  const amount=Number(document.getElementById("amount").value);
-  if(!name) return alert("Please enter your name.");
-  if(!amount || amount<1) return alert("Please enter a valid contribution amount.");
-  document.getElementById("payName").textContent=name;
-  document.getElementById("payAmount").textContent="₹"+amount.toLocaleString("en-IN");
-  document.getElementById("upiText").textContent=UPI_ID;
-  const data=`upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent("Sushila Residency Mitra Mandal")}&am=${amount}&cu=INR`;
-  document.getElementById("qr").src=`https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(data)}`;
+  const name = document.getElementById("name").value.trim();
+  const amount = Number(document.getElementById("amount").value);
+
+  if(!name) {
+    return alert("Please enter your name.");
+  }
+
+  if(!amount || amount < 1) {
+    return alert("Please enter a valid contribution amount.");
+  }
+
+  document.getElementById("payName").textContent = name;
+  document.getElementById("payAmount").textContent =
+    "₹" + amount.toLocaleString("en-IN");
+
+  // Keep the QR static
+  document.getElementById("qr").src = "Upiid.jpg";
+
   document.getElementById("formCard").classList.add("hidden");
   document.getElementById("receiptCard").classList.add("hidden");
   document.getElementById("paymentCard").classList.remove("hidden");
